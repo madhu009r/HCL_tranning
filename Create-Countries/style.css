@@ -1,0 +1,12 @@
+body {
+    background-color: #f4f6f8;
+}
+
+.country-card {
+    margin-bottom: 20px;
+}
+
+.flag {
+    height: 150px;
+    object-fit: cover;
+}
