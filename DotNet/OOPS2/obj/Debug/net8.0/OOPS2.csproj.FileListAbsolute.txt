@@ -1,0 +1,14 @@
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.AssemblyInfoInputs.cache
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.AssemblyInfo.cs
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.csproj.CoreCompileInputs.cache
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\bin\Debug\net8.0\OOPS2.exe
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\bin\Debug\net8.0\OOPS2.deps.json
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\bin\Debug\net8.0\OOPS2.runtimeconfig.json
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\bin\Debug\net8.0\OOPS2.dll
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\bin\Debug\net8.0\OOPS2.pdb
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.dll
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\refint\OOPS2.dll
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.pdb
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\OOPS2.genruntimeconfig.cache
+C:\Users\Munish\Hcl_task\DotNet\OOPS2\obj\Debug\net8.0\ref\OOPS2.dll
