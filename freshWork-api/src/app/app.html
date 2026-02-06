@@ -1,0 +1,63 @@
+<h2>Freshdesk Tickets</h2>
+
+<!-- Create Ticket Form -->
+<h3>Create Ticket</h3>
+<input placeholder="Email" [(ngModel)]="newTicket.email"><br><br>
+<input placeholder="Subject" [(ngModel)]="newTicket.subject"><br><br>
+<textarea placeholder="Description"
+          [(ngModel)]="newTicket.description"></textarea><br><br>
+
+<button (click)="createTicket()">Create Ticket</button>
+
+<hr>
+
+<!-- Tickets Table -->
+<h3>Tickets List</h3>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Subject</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let t of tickets">
+    <td>{{ t.id }}</td>
+    <td>{{ t.subject }}</td>
+    <td>{{ t.status }}</td>
+    <td>{{ t.priority }}</td>
+    <td>
+      <!-- <button (click)="updateTicket()">Update</button> -->
+      <button (click)="deleteTicket(t.id)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<!-- Edit Ticket Section -->
+<div *ngIf="selectedTicket">
+  <h3>Edit Ticket (ID: {{ selectedTicket.id }})</h3>
+
+  <input [(ngModel)]="selectedTicket.subject" placeholder="Subject"><br><br>
+
+  <label>Priority:</label>
+  <select [(ngModel)]="selectedTicket.priority">
+    <option [value]="1">Low</option>
+    <option [value]="2">Medium</option>
+    <option [value]="3">High</option>
+    <option [value]="4">Urgent</option>
+  </select><br><br>
+
+  <label>Status:</label>
+  <select [(ngModel)]="selectedTicket.status">
+    <option [value]="2">Open</option>
+    <option [value]="3">Pending</option>
+    <option [value]="4">Resolved</option>
+    <option [value]="5">Closed</option>
+  </select><br><br>
+
+  <button (click)="updateTicket()">Save Changes</button>
+  <button (click)="selectedTicket = null">Cancel</button>
+</div>
+

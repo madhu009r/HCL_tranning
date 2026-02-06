@@ -1,0 +1,10 @@
+{
+  "/freshdesk": {
+    "target": "https://kceac9005.freshdesk.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/freshdesk": ""
+    }
+  }
+}
