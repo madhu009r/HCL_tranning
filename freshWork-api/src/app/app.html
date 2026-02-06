@@ -1,21 +1,104 @@
-<h2>Freshdesk Tickets</h2>
+<h2>Freshdesk Ticket Management (Practice)</h2>
 
-<!-- Create Ticket Form -->
+<!-- ================= CREATE TICKET ================= -->
 <h3>Create Ticket</h3>
-<input placeholder="Email" [(ngModel)]="newTicket.email"><br><br>
-<input placeholder="Subject" [(ngModel)]="newTicket.subject"><br><br>
-<textarea placeholder="Description"
-          [(ngModel)]="newTicket.description"></textarea><br><br>
 
-<button (click)="createTicket()">Create Ticket</button>
+<div style="border:1px solid #ccc; padding:10px; width:400px;">
+  <input
+    type="email"
+    placeholder="Customer Email"
+    [(ngModel)]="newTicket.email"
+    style="width:100%; margin-bottom:6px;"
+  />
 
-<hr>
+  <input
+    type="text"
+    placeholder="Subject"
+    [(ngModel)]="newTicket.subject"
+    style="width:100%; margin-bottom:6px;"
+  />
 
-<!-- Tickets Table -->
+  <textarea
+    placeholder="Description"
+    [(ngModel)]="newTicket.description"
+    style="width:100%; margin-bottom:6px;"
+  ></textarea>
+
+  <label>Priority:</label>
+  <select [(ngModel)]="newTicket.priority">
+    <option [ngValue]="1">Low</option>
+    <option [ngValue]="2">Medium</option>
+    <option [ngValue]="3">High</option>
+    <option [ngValue]="4">Urgent</option>
+  </select>
+
+  <br /><br />
+
+  <label>Status:</label>
+  <select [(ngModel)]="newTicket.status">
+    <option [ngValue]="2">Open</option>
+    <option [ngValue]="3">Pending</option>
+    <option [ngValue]="4">Resolved</option>
+    <option [ngValue]="5">Closed</option>
+  </select>
+
+  <br /><br />
+
+  <button (click)="createTicket()">Create Ticket</button>
+</div>
+
+<hr />
+
+<!-- ================= EDIT TICKET ================= -->
+<div *ngIf="selectedTicket" style="margin-top:20px;">
+  <h3>Edit Ticket (ID: {{ selectedTicket.id }})</h3>
+
+  <div style="border:1px solid #999; padding:10px; width:400px;">
+    <input
+      type="text"
+      [(ngModel)]="selectedTicket.subject"
+      placeholder="Subject"
+      style="width:100%; margin-bottom:6px;"
+    />
+
+    <textarea
+      [(ngModel)]="selectedTicket.description"
+      placeholder="Description"
+      style="width:100%; margin-bottom:6px;"
+    ></textarea>
+
+    <label>Priority:</label>
+    <select [(ngModel)]="selectedTicket.priority">
+      <option [ngValue]="1">Low</option>
+      <option [ngValue]="2">Medium</option>
+      <option [ngValue]="3">High</option>
+      <option [ngValue]="4">Urgent</option>
+    </select>
+
+    <br /><br />
+
+    <label>Status:</label>
+    <select [(ngModel)]="selectedTicket.status">
+      <option [ngValue]="2">Open</option>
+      <option [ngValue]="3">Pending</option>
+      <option [ngValue]="4">Resolved</option>
+      <option [ngValue]="5">Closed</option>
+    </select>
+
+    <br /><br />
+
+    <button (click)="updateTicket()">Save</button>
+    <button (click)="selectedTicket = null">Cancel</button>
+  </div>
+</div>
+
+<hr />
+
+<!-- ================= TICKETS TABLE ================= -->
 <h3>Tickets List</h3>
 
-<table border="1" cellpadding="8">
-  <tr>
+<table border="1" cellpadding="8" cellspacing="0" width="100%">
+  <tr style="background:#f0f0f0;">
     <th>ID</th>
     <th>Subject</th>
     <th>Status</th>
@@ -23,41 +106,28 @@
     <th>Actions</th>
   </tr>
 
-  <tr *ngFor="let t of tickets">
-    <td>{{ t.id }}</td>
-    <td>{{ t.subject }}</td>
-    <td>{{ t.status }}</td>
-    <td>{{ t.priority }}</td>
-    <td>
-      <!-- <button (click)="updateTicket()">Update</button> -->
-      <button (click)="deleteTicket(t.id)">Delete</button>
-    </td>
-  </tr>
+  <!-- MAIN ROW -->
+  <ng-container *ngFor="let t of tickets">
+    <tr>
+      <td>{{ t.id }}</td>
+      <td>{{ t.subject }}</td>
+      <td>{{ t.status }}</td>
+      <td>{{ t.priority }}</td>
+      <td>
+        <button (click)="viewTicket(t)">
+          {{ expandedTicketId === t.id ? 'Hide' : 'View' }}
+        </button>
+        <button (click)="editTicket(t)">Edit</button>
+        <button (click)="deleteTicket(t.id)">Delete</button>
+      </td>
+    </tr>
+
+    <!-- DESCRIPTION ROW -->
+    <tr *ngIf="expandedTicketId === t.id">
+      <td colspan="5" style="background:#fafafa;">
+        <strong>Description:</strong><br />
+        {{ selectedTicket?.description }}
+      </td>
+    </tr>
+  </ng-container>
 </table>
-
-<!-- Edit Ticket Section -->
-<div *ngIf="selectedTicket">
-  <h3>Edit Ticket (ID: {{ selectedTicket.id }})</h3>
-
-  <input [(ngModel)]="selectedTicket.subject" placeholder="Subject"><br><br>
-
-  <label>Priority:</label>
-  <select [(ngModel)]="selectedTicket.priority">
-    <option [value]="1">Low</option>
-    <option [value]="2">Medium</option>
-    <option [value]="3">High</option>
-    <option [value]="4">Urgent</option>
-  </select><br><br>
-
-  <label>Status:</label>
-  <select [(ngModel)]="selectedTicket.status">
-    <option [value]="2">Open</option>
-    <option [value]="3">Pending</option>
-    <option [value]="4">Resolved</option>
-    <option [value]="5">Closed</option>
-  </select><br><br>
-
-  <button (click)="updateTicket()">Save Changes</button>
-  <button (click)="selectedTicket = null">Cancel</button>
-</div>
-
