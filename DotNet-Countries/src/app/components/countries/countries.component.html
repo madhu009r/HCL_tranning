@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <h3>Countries</h3>
+
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let country of countries">
+      <div class="card h-100 shadow-sm">
+        <img [src]="country.flagUrl" class="card-img-top" height="150">
+        <div class="card-body">
+          <h5>{{country.name}}</h5>
+          <p>Capital: {{country.capital}}</p>
+          <p>Region: {{country.region}}</p>
+          <button class="btn btn-success w-100"
+                  (click)="addToFavourite(country)">
+            Add to Favourite
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

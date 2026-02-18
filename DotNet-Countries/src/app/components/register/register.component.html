@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h3 class="mb-3 text-center">Register</h3>
+
+    <input class="form-control mb-2"
+           [(ngModel)]="user.username"
+           placeholder="Username">
+
+    <input type="password"
+           class="form-control mb-3"
+           [(ngModel)]="user.password"
+           placeholder="Password">
+
+    <button class="btn btn-success w-100"
+            (click)="register()">
+      Register
+    </button>
+
+    <p class="text-success mt-2">{{message}}</p>
+    <p class="text-danger mt-2">{{error}}</p>
+
+    <div class="text-center mt-3">
+      <a routerLink="/">Back to Login</a>
+    </div>
+  </div>
+</div>

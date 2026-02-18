@@ -1,0 +1,19 @@
+<div class="container mt-5">
+  <h3>Login</h3>
+
+  <input class="form-control mb-2"
+         [(ngModel)]="user.username"
+         placeholder="Username">
+
+  <input type="password"
+         class="form-control mb-2"
+         [(ngModel)]="user.password"
+         placeholder="Password">
+
+  <button class="btn btn-primary w-100"
+          (click)="login()">Login</button>
+
+  <p class="text-danger mt-2">{{error}}</p>
+
+  <a routerLink="/register">Create Account</a>
+</div>
